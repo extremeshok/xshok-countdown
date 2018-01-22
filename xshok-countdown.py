@@ -7,13 +7,14 @@
 # Copyright (c) Adrian Jon Kriel :: admin@extremeshok.com
 ################################################################################
 #
-# Script updates can be found at: https://bitbucket.org/extremeshok/xshok-countdown
+# Script updates can be found at: https://github.com/extremeshok/xshok-countdown
 #
 # License: BSD (Berkeley Software Distribution)
 #
 ################################################################################
 #
-# A graphical countdown timer which can be used for a conference, accepts keyboard input to control the countdown timer for a speaker.
+# A graphical countdown timer which can be used for a conference or speaking event. 
+# Accepts keyboard input to control the countdown timer which is displayed using Qt.
 #
 # Keys
 # start/pause = spacebar/right
