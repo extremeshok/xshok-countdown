@@ -7,7 +7,7 @@
 # Copyright (c) Adrian Jon Kriel :: admin@extremeshok.com
 ################################################################################
 #
-# Script updates can be found at: https://github.com/extremeshok/xshok-countdown
+# Script updates can be found at: https://bitbucket.org/extremeshok/xshok-countdown
 #
 # License: BSD (Berkeley Software Distribution)
 #
@@ -15,7 +15,7 @@
 #
 # A graphical countdown timer which can be used for a conference, accepts keyboard input to control the countdown timer for a speaker.
 #
-## Keys
+# Keys
 # start/pause = spacebar/right
 # increase 1minute = plus/equal/up
 # decrease 1minute = minus/underscore/down
@@ -23,7 +23,7 @@
 # exit/terminate = esc
 # label/branding = tab/t
 #
-## Features
+# Features
 # Prevent negative times, allow add/remove minutes whilst counting down
 # Reset the timer without needing to relaunch
 # Set a branding message
@@ -195,12 +195,12 @@ class FSM(object):
 
     def gettext(self):
         dlg = QtGui.QInputDialog()
-        dlg.setInputMode( QtGui.QInputDialog.TextInput)
+        dlg.setInputMode(QtGui.QInputDialog.TextInput)
         dlg.setLabelText("Label Text: ")
-        dlg.resize(500,100)
+        dlg.resize(500, 100)
         ok = dlg.exec_()
         dlg.textValue()
-        #print(dlg.textValue())
+        # print(dlg.textValue())
         self.label.setStyleSheet(reset_style)
         self.label.setText(dlg.textValue())
         self.current_state = self.gottext
@@ -209,7 +209,6 @@ class FSM(object):
     # States:
     def gottext(self):
         self.label.setStyleSheet(reset_style)
-
 
     def reset(self):
         self.label.setStyleSheet(reset_style)
@@ -233,7 +232,7 @@ class FSM(object):
             self.label.setText("TIMES UP")
 
     def countdown(self):
-        ##print(self.remainingTime)
+        # print(self.remainingTime)
         if self.remainingTime <= 0:
             self.timeisup()
             return
@@ -260,13 +259,13 @@ def main(argv):
 
     def on_key(ev):
         if ev.key() == QtCore.Qt.Key_Up or ev.key() == QtCore.Qt.Key_Plus or ev.key() == QtCore.Qt.Key_Equal:
-            #print("increase")
+            # print("increase")
             fsm.inctime()
         elif ev.key() == QtCore.Qt.Key_Tab or ev.key() == QtCore.Qt.Key_T:
-            #print("text")
+            # print("text")
             fsm.gettext()
         elif ev.key() == QtCore.Qt.Key_Down or ev.key() == QtCore.Qt.Key_Minus or ev.key() == QtCore.Qt.Key_Underscore:
-            #print("decrease")
+            # print("decrease")
             fsm.dectime()
         elif ev.key() == QtCore.Qt.Key_Left or ev.key() == QtCore.Qt.Key_Enter or ev.key() == QtCore.Qt.Key_Return:
             if fsm.current_state in [fsm.countdown]:
@@ -276,15 +275,15 @@ def main(argv):
             else:
                 fsm.reset()
         elif ev.key() == QtCore.Qt.Key_Right or ev.key() == QtCore.Qt.Key_Space:
-            #print("play/pause")
+            # print("play/pause")
             if fsm.current_state in [fsm.reset]:
-                #print("reset")
+                # print("reset")
                 fsm.start()
             elif fsm.current_state in [fsm.countdown]:
-                #print("countdown")
+                # print("countdown")
                 fsm.pause()
             elif fsm.current_state in [fsm.paused]:
-                #print("paused")
+                # print("paused")
                 fsm.resume()
         elif ev.key() == QtCore.Qt.Key_Escape:
             sys.exit()
